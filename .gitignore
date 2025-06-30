@@ -1,0 +1,21 @@
+# Node.js
+node_modules
+dist
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local Database
+db.json
+
+# Large Dataset Archives
+*.zip
+*.tar.gz
+
+# macOS
+.DS_Store
+__MACOSX
+
+# Ignore dataset directories
+caltech-101/
+

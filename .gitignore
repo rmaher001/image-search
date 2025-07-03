@@ -19,3 +19,4 @@ __MACOSX
 # Ignore dataset directories
 caltech-101/
 
+.search.ts.swp

@@ -1,6 +1,6 @@
 /**
  * =============================================================================
- * TypeScript Image Search CLI using OpenAI's CLIP Model (v3.4.0)
+ * TypeScript Image Search CLI using OpenAI's CLIP Model (v3.4.1)
  * =============================================================================
  *
  * Description:
@@ -8,7 +8,7 @@
  * semantic image search. It uses the `@xenova/transformers` library to run a
  * quantized version of the CLIP model directly in Node.js.
  *
- * NEW in v3.4.0: Added a similarity threshold to only return meaningful matches.
+ * NEW in v3.4.1: Updated 'no match' log to show full file path.
  *
  * To set up (run once):
  * 1. mkdir image-search-ts && cd image-search-ts
@@ -37,7 +37,7 @@ import * as path from 'path';
 import { exec } from 'child_process';
 
 // --- CONFIGURATION ---
-const SCRIPT_VERSION = 'v3.4.0';
+const SCRIPT_VERSION = 'v3.4.1';
 const MODEL_NAME = 'Xenova/clip-vit-base-patch32';
 const DB_PATH = './db.json';
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp'];
@@ -288,7 +288,7 @@ async function search(query: string, topN: number = 4) {
     console.log('\nCould not find any meaningful matches.');
     // Optionally, show the best but "not good enough" match for debugging/interest
     if (allMatches.length > 0) {
-        console.log(`(The best match was "${path.basename(allMatches[0].entry.filePath)}" with a score of ${(allMatches[0].similarity * 100).toFixed(2)}%, which is below the threshold of ${(SIMILARITY_THRESHOLD * 100).toFixed(2)}%.)`);
+        console.log(`(The best match was "${allMatches[0].entry.filePath}" with a score of ${(allMatches[0].similarity * 100).toFixed(2)}%, which is below the threshold of ${(SIMILARITY_THRESHOLD * 100).toFixed(2)}%.)`);
     }
   }
 }
